@@ -108,8 +108,8 @@
       }
 
       .brand-logo {
-        width: 42px;
-        height: 34px;
+        width: 46px;
+        height: 30px;
         object-fit: contain;
         flex: 0 0 auto;
       }
@@ -219,8 +219,8 @@
         position: relative;
         min-height: 86vh;
         display: grid;
-        align-items: center;
-        padding: 118px 18px 48px;
+        align-items: end;
+        padding: 150px 18px 76px;
         isolation: isolate;
         overflow: hidden;
         background: #2b3027;
@@ -256,6 +256,30 @@
         width: min(560px, 100%);
         color: var(--white);
         animation: heroRise 820ms ease both;
+      }
+
+      .hero .button {
+        min-height: 50px;
+        border-color: rgba(255, 255, 255, 0.28);
+        background: rgba(255, 255, 255, 0.16);
+        color: var(--white);
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(12px);
+      }
+
+      .hero .button:hover {
+        border-color: rgba(255, 255, 255, 0.42);
+        background: rgba(255, 255, 255, 0.24);
+        box-shadow: 0 22px 52px rgba(0, 0, 0, 0.22);
+      }
+
+      .hero .button.secondary {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--white);
+      }
+
+      .hero .button.secondary:hover {
+        background: rgba(255, 255, 255, 0.18);
       }
 
       .eyebrow {
@@ -948,7 +972,8 @@
 
         .hero {
           min-height: 86vh;
-          padding-top: 120px;
+          padding-top: 130px;
+          padding-bottom: 60px;
         }
 
         .section-head,
@@ -1006,7 +1031,7 @@
 
         .hero {
           min-height: auto;
-          padding: 118px 16px 42px;
+          padding: 132px 16px 54px;
         }
 
         h1 {

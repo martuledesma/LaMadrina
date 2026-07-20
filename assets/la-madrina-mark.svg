@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 62" role="img" aria-label="La Madrina">
+  <path d="M8 48C8 26 22 12 40 12" fill="none" stroke="#4E8A2D" stroke-width="10" stroke-linecap="round"/>
+  <path d="M32 48C32 20 46 7 64 8" fill="none" stroke="#0E5C45" stroke-width="10" stroke-linecap="round"/>
+  <path d="M54 48C54 26 68 13 88 16" fill="none" stroke="#6FA336" stroke-width="10" stroke-linecap="round"/>
+  <path d="M40 48C40 31 49 20 62 20" fill="none" stroke="#4E8A2D" stroke-width="8" stroke-linecap="round"/>
+  <path d="M70 48V30" fill="none" stroke="#0E5C45" stroke-width="8" stroke-linecap="round"/>
+</svg>

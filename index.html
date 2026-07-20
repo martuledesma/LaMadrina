@@ -93,8 +93,8 @@
       }
 
       .brand-logo {
-        width: 38px;
-        height: 38px;
+        width: 42px;
+        height: 34px;
         object-fit: contain;
         flex: 0 0 auto;
       }
@@ -585,9 +585,71 @@
         gap: 14px;
       }
 
+      .services-section {
+        position: relative;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(16, 29, 22, 0.5), rgba(16, 29, 22, 0.56)),
+          url("assets/la-madrina-vino-vista.jpeg") center / cover;
+        color: var(--white);
+      }
+
+      .services-section::before,
+      .services-section::after {
+        content: "";
+        position: absolute;
+        left: -4vw;
+        right: -4vw;
+        height: 46px;
+        z-index: 0;
+        background: var(--soft);
+      }
+
+      .services-section::before {
+        top: -18px;
+        border-radius: 0 0 50% 50%;
+      }
+
+      .services-section::after {
+        bottom: -18px;
+        border-radius: 50% 50% 0 0;
+      }
+
+      .services-section .section-inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .services-section .section-head {
+        display: block;
+        max-width: 760px;
+        margin: 0 auto 32px;
+        text-align: center;
+      }
+
+      .services-section .section-kicker,
+      .services-section h2 {
+        color: var(--white);
+      }
+
       .service-card {
         min-height: 190px;
         padding: 24px;
+      }
+
+      .services-section .service-card {
+        min-height: 210px;
+        padding: 26px 22px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        text-align: center;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      .services-section .service-card p {
+        color: rgba(255, 255, 255, 0.82);
       }
 
       .service-icon {
@@ -600,6 +662,13 @@
         border: 1px solid rgba(23, 107, 69, 0.18);
         background: #eff5e7;
         color: var(--green);
+      }
+
+      .services-section .service-icon {
+        margin: 0 auto 18px;
+        border-color: rgba(255, 255, 255, 0.26);
+        background: rgba(255, 255, 255, 0.18);
+        color: var(--white);
       }
 
       .service-icon svg {
@@ -858,7 +927,7 @@
     <header class="topbar" data-topbar>
       <nav class="nav" aria-label="Navegacion principal">
         <a class="brand" href="#inicio" aria-label="Ir al inicio">
-          <img class="brand-logo" src="assets/la-madrina-logo-clean.png" alt="">
+          <img class="brand-logo" src="assets/la-madrina-mark.svg" alt="">
           <span class="brand-text">
             <span class="brand-name">La Madrina</span>
             <span class="brand-type">Apart Hotel</span>
@@ -936,12 +1005,12 @@
         </div>
       </section>
 
-      <section class="section" id="servicios">
+      <section class="section services-section" id="servicios">
         <div class="section-inner">
           <div class="section-head">
             <div>
               <p class="section-kicker">Servicios</p>
-              <h2>Lo importante, claro desde el inicio.</h2>
+              <h2>Comodidades para descansar sin pensar de mas.</h2>
             </div>
           </div>
 

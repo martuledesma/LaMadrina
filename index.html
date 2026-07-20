@@ -368,28 +368,113 @@
         box-shadow: 0 0 0 5px #e8f1df;
       }
 
-      .image-stack {
-        display: grid;
-        grid-template-columns: 0.7fr 1fr;
-        gap: 14px;
-        align-items: stretch;
+      .photo-carousel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #d9d9d9;
+        box-shadow: var(--shadow);
+        isolation: isolate;
       }
 
-      .image-stack img {
+      .photo-carousel.is-complex {
+        height: clamp(430px, 50vw, 640px);
+      }
+
+      .photo-carousel.is-gallery {
+        height: clamp(430px, 54vw, 660px);
+      }
+
+      .photo-carousel-track {
+        height: 100%;
+        display: flex;
+        transition: transform 620ms ease;
+      }
+
+      .photo-slide {
+        position: relative;
+        min-width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .photo-slide img {
         width: 100%;
         height: 100%;
+        display: block;
         object-fit: cover;
-        border-radius: 8px;
-        box-shadow: var(--shadow);
       }
 
-      .image-stack img:first-child {
-        aspect-ratio: 4 / 5;
+      .photo-slide figcaption {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        max-width: min(420px, calc(100% - 36px));
+        padding: 10px 12px;
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--ink);
+        font-size: 0.92rem;
+        font-weight: 850;
       }
 
-      .image-stack img:last-child {
-        aspect-ratio: 4 / 3;
-        align-self: end;
+      .photo-arrow {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(23, 107, 69, 0.2);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.88);
+        color: var(--green);
+        font-size: 1.55rem;
+        font-weight: 900;
+        line-height: 1;
+        cursor: pointer;
+        transform: translateY(-50%);
+        transition: background 160ms ease, color 160ms ease;
+      }
+
+      .photo-arrow:hover {
+        background: var(--green);
+        color: var(--white);
+      }
+
+      .photo-arrow.prev {
+        left: 14px;
+      }
+
+      .photo-arrow.next {
+        right: 14px;
+      }
+
+      .photo-dots {
+        position: absolute;
+        left: 50%;
+        bottom: 18px;
+        z-index: 2;
+        display: flex;
+        gap: 7px;
+        transform: translateX(-50%);
+      }
+
+      .photo-dot {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.62);
+        cursor: pointer;
+      }
+
+      .photo-dot.is-active {
+        width: 22px;
+        background: var(--white);
       }
 
       .units-grid {
@@ -527,44 +612,6 @@
         fill: none;
       }
 
-      .gallery {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        grid-template-rows: 310px 310px;
-        gap: 14px;
-      }
-
-      .gallery figure {
-        position: relative;
-        margin: 0;
-        overflow: hidden;
-        border-radius: 8px;
-        background: #d9d9d9;
-      }
-
-      .gallery figure:first-child {
-        grid-row: span 2;
-      }
-
-      .gallery img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .gallery figcaption {
-        position: absolute;
-        left: 16px;
-        bottom: 16px;
-        max-width: calc(100% - 32px);
-        padding: 9px 11px;
-        border-radius: 7px;
-        background: rgba(255, 255, 255, 0.88);
-        color: var(--ink);
-        font-size: 0.9rem;
-        font-weight: 800;
-      }
-
       .location-grid {
         display: grid;
         grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -700,13 +747,9 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .gallery {
-          grid-template-columns: 1fr;
-          grid-template-rows: repeat(3, minmax(260px, 38vh));
-        }
-
-        .gallery figure:first-child {
-          grid-row: auto;
+        .photo-carousel.is-complex,
+        .photo-carousel.is-gallery {
+          height: min(520px, 66vh);
         }
       }
 
@@ -761,9 +804,25 @@
 
         .units-grid,
         .home-capacity-head,
-        .services-grid,
-        .image-stack {
+        .services-grid {
           grid-template-columns: 1fr;
+        }
+
+        .photo-carousel.is-complex,
+        .photo-carousel.is-gallery {
+          height: min(430px, 70vh);
+        }
+
+        .photo-arrow {
+          width: 36px;
+          height: 36px;
+        }
+
+        .photo-slide figcaption {
+          right: 14px;
+          left: 14px;
+          bottom: 14px;
+          max-width: none;
         }
 
         .section {
@@ -845,9 +904,28 @@
               <li>Ideal para escapadas, vacaciones familiares y estadias tranquilas.</li>
             </ul>
           </div>
-          <div class="image-stack" aria-label="Fotos del complejo">
-            <img src="assets/la-madrina-terraza.jpeg" alt="Terraza privada con vista a las montanas">
-            <img src="assets/la-madrina-vino.jpeg" alt="Mesa con vino y aperitivos en La Madrina">
+          <div class="photo-carousel is-complex" data-photo-carousel aria-label="Fotos del complejo">
+            <div class="photo-carousel-track" data-photo-track>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-terraza.jpeg" alt="Terraza privada con vista a las montanas">
+                <figcaption>Terrazas privadas para mirar el valle</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-complejo-dia.jpeg" alt="Calle interna del complejo La Madrina">
+                <figcaption>Arquitectura baja integrada al paisaje</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-complejo-calle.jpeg" alt="Calle interna de La Madrina con vegetacion y montanas">
+                <figcaption>Senderos, jardines y montanas cerca</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-vino-vista.jpeg" alt="Persona con copa de vino mirando el paisaje">
+                <figcaption>Momentos tranquilos frente al valle</figcaption>
+              </figure>
+            </div>
+            <button class="photo-arrow prev" type="button" aria-label="Foto anterior" data-photo-prev>‹</button>
+            <button class="photo-arrow next" type="button" aria-label="Foto siguiente" data-photo-next>›</button>
+            <div class="photo-dots" data-photo-dots aria-label="Seleccionar foto"></div>
           </div>
         </div>
       </section>
@@ -948,39 +1026,44 @@
             </div>
           </div>
 
-          <div class="gallery">
-            <figure>
-              <img src="assets/la-madrina-complejo-dia.jpeg" alt="Calle interna del complejo La Madrina">
-              <figcaption>Complejo integrado al paisaje</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/la-madrina-complejo-calle.jpeg" alt="Calle interna de La Madrina con vegetacion y montanas">
-              <figcaption>Senderos y verde del complejo</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/la-madrina-terraza.jpeg" alt="Terraza con mesa y vista al valle">
-              <figcaption>Terrazas privadas</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/la-madrina-familia-terraza.jpeg" alt="Familia descansando en terraza con vista a las montanas">
-              <figcaption>Espacios para compartir</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/la-madrina-vino-vista.jpeg" alt="Persona con copa de vino mirando el paisaje">
-              <figcaption>Momentos frente al valle</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/la-madrina-vino.jpeg" alt="Detalle de copa de vino y aperitivos">
-              <figcaption>Momentos de descanso</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/la-madrina-amaicha-bienvenida.jpeg" alt="Detalle de bienvenida en la cabana Amaicha">
-              <figcaption>Bienvenida en la unidad</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/la-madrina-desayuno.jpeg" alt="Desayuno con medialunas, frutas y huevos">
-              <figcaption>Desayunos para empezar el dia</figcaption>
-            </figure>
+          <div class="photo-carousel is-gallery" data-photo-carousel aria-label="Galeria de La Madrina">
+            <div class="photo-carousel-track" data-photo-track>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-complejo-dia.jpeg" alt="Calle interna del complejo La Madrina">
+                <figcaption>Complejo integrado al paisaje</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-complejo-calle.jpeg" alt="Calle interna de La Madrina con vegetacion y montanas">
+                <figcaption>Senderos y verde del complejo</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-terraza.jpeg" alt="Terraza con mesa y vista al valle">
+                <figcaption>Terrazas privadas</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-familia-terraza.jpeg" alt="Familia descansando en terraza con vista a las montanas">
+                <figcaption>Espacios para compartir</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-vino-vista.jpeg" alt="Persona con copa de vino mirando el paisaje">
+                <figcaption>Momentos frente al valle</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-vino.jpeg" alt="Detalle de copa de vino y aperitivos">
+                <figcaption>Momentos de descanso</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-amaicha-bienvenida.jpeg" alt="Detalle de bienvenida en la cabana Amaicha">
+                <figcaption>Bienvenida en la unidad</figcaption>
+              </figure>
+              <figure class="photo-slide">
+                <img src="assets/la-madrina-desayuno.jpeg" alt="Desayuno con medialunas, frutas y huevos">
+                <figcaption>Desayunos para empezar el dia</figcaption>
+              </figure>
+            </div>
+            <button class="photo-arrow prev" type="button" aria-label="Foto anterior" data-photo-prev>‹</button>
+            <button class="photo-arrow next" type="button" aria-label="Foto siguiente" data-photo-next>›</button>
+            <div class="photo-dots" data-photo-dots aria-label="Seleccionar foto"></div>
           </div>
         </div>
       </section>
@@ -1061,6 +1144,69 @@
           menu.classList.remove("is-open");
           menuButton.setAttribute("aria-expanded", "false");
         });
+      });
+
+      document.querySelectorAll("[data-photo-carousel]").forEach((carousel) => {
+        const track = carousel.querySelector("[data-photo-track]");
+        const slides = Array.from(carousel.querySelectorAll(".photo-slide"));
+        const prev = carousel.querySelector("[data-photo-prev]");
+        const next = carousel.querySelector("[data-photo-next]");
+        const dots = carousel.querySelector("[data-photo-dots]");
+        let current = 0;
+        let timer;
+
+        slides.forEach((_, index) => {
+          const dot = document.createElement("button");
+          dot.className = "photo-dot";
+          dot.type = "button";
+          dot.setAttribute("aria-label", `Ver foto ${index + 1}`);
+          dot.addEventListener("click", () => {
+            goTo(index);
+            restart();
+          });
+          dots.append(dot);
+        });
+
+        const dotButtons = Array.from(dots.querySelectorAll(".photo-dot"));
+
+        const goTo = (index) => {
+          current = (index + slides.length) % slides.length;
+          track.style.transform = `translateX(-${current * 100}%)`;
+          dotButtons.forEach((dot, dotIndex) => {
+            dot.classList.toggle("is-active", dotIndex === current);
+          });
+        };
+
+        const start = () => {
+          timer = window.setInterval(() => goTo(current + 1), 4200);
+        };
+
+        const stop = () => {
+          window.clearInterval(timer);
+        };
+
+        const restart = () => {
+          stop();
+          start();
+        };
+
+        prev.addEventListener("click", () => {
+          goTo(current - 1);
+          restart();
+        });
+
+        next.addEventListener("click", () => {
+          goTo(current + 1);
+          restart();
+        });
+
+        carousel.addEventListener("mouseenter", stop);
+        carousel.addEventListener("mouseleave", start);
+        carousel.addEventListener("focusin", stop);
+        carousel.addEventListener("focusout", start);
+
+        goTo(0);
+        start();
       });
     </script>
   </body>

@@ -382,7 +382,7 @@
       }
 
       .photo-carousel.is-gallery {
-        height: clamp(430px, 54vw, 660px);
+        height: clamp(320px, 38vw, 480px);
       }
 
       .photo-carousel-track {
@@ -747,9 +747,12 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .photo-carousel.is-complex,
-        .photo-carousel.is-gallery {
+        .photo-carousel.is-complex {
           height: min(520px, 66vh);
+        }
+
+        .photo-carousel.is-gallery {
+          height: min(390px, 52vh);
         }
       }
 
@@ -808,9 +811,12 @@
           grid-template-columns: 1fr;
         }
 
-        .photo-carousel.is-complex,
-        .photo-carousel.is-gallery {
+        .photo-carousel.is-complex {
           height: min(430px, 70vh);
+        }
+
+        .photo-carousel.is-gallery {
+          height: min(320px, 56vh);
         }
 
         .photo-arrow {
@@ -937,10 +943,6 @@
               <p class="section-kicker">Servicios</p>
               <h2>Lo importante, claro desde el inicio.</h2>
             </div>
-            <p class="lead">
-              Una landing-web tiene que vender sin hacer perder tiempo. Por eso los servicios aparecen
-              como beneficios concretos, faciles de escanear.
-            </p>
           </div>
 
           <div class="services-grid">

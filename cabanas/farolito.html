@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cabana Farolito | La Madrina</title>
+    <style>
+      :root {
+        --green: #176b45;
+        --ink: #171713;
+        --muted: #676a61;
+        --line: #e1e6d8;
+        --paper: #fbfcf7;
+        --white: #fff;
+        --sage: #eef4e8;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+      }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; width: 100%; }
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px max(18px, calc((100vw - 1160px) / 2));
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 252, 247, 0.94);
+        backdrop-filter: blur(14px);
+      }
+      .brand-name {
+        display: block;
+        font-family: Georgia, "Times New Roman", serif;
+        letter-spacing: 0.2em;
+        font-size: 1.08rem;
+      }
+      .brand-type {
+        display: block;
+        margin-top: 2px;
+        color: var(--green);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: end; }
+      .nav-links a { padding: 10px 12px; border-radius: 7px; font-size: 0.92rem; font-weight: 750; }
+      .nav-links a:hover { background: var(--sage); color: var(--green); }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border-radius: 7px;
+        background: var(--green);
+        color: var(--white);
+        font-weight: 850;
+      }
+      .page-hero {
+        width: min(1160px, calc(100% - 36px));
+        margin: 34px auto 0;
+        display: grid;
+        grid-template-columns: minmax(280px, 0.58fr) minmax(0, 1fr);
+        gap: 28px;
+        align-items: stretch;
+      }
+      .hero-copy {
+        padding: 34px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+      .kicker {
+        margin: 0 0 12px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
+      h1 { margin-bottom: 18px; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1; }
+      h2 { margin-bottom: 22px; font-size: clamp(1.9rem, 3.4vw, 3rem); }
+      p { color: var(--muted); line-height: 1.68; }
+      .hero-media img {
+        height: 100%;
+        min-height: 470px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 26px 0;
+      }
+      .meta span {
+        min-height: 78px;
+        padding: 14px;
+        border-radius: 8px;
+        background: var(--sage);
+        color: #344037;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+      .section { padding: 72px 18px; }
+      .inner { width: min(1160px, 100%); margin: 0 auto; }
+      .two-col { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; align-items: start; }
+      .amenities {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .amenities li {
+        min-height: 70px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        color: #383d35;
+        font-weight: 700;
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+        grid-auto-rows: 270px;
+        gap: 14px;
+      }
+      .gallery img {
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .gallery img:first-child {
+        grid-row: span 2;
+      }
+      .cta {
+        padding: 58px 18px;
+        background: #173d2b;
+        color: var(--white);
+        text-align: center;
+      }
+      .cta p { width: min(620px, 100%); margin: 0 auto 22px; color: rgba(255,255,255,.82); }
+      footer { padding: 28px 18px; background: #10291d; color: rgba(255,255,255,.74); }
+      .footer-inner { width: min(1160px,100%); margin: 0 auto; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+      @media (max-width: 860px) {
+        .page-hero, .two-col { grid-template-columns: 1fr; }
+        .hero-media img { min-height: 320px; }
+        .meta, .amenities, .gallery { grid-template-columns: 1fr; }
+        .gallery { grid-auto-rows: minmax(260px, 38vh); }
+        .gallery img:first-child { grid-row: auto; }
+        .nav { align-items: flex-start; flex-direction: column; }
+      }
+      @media (max-width: 560px) {
+        .page-hero { width: calc(100% - 28px); margin-top: 18px; }
+        .hero-copy { padding: 24px; }
+        .button { width: 100%; text-align: center; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <a href="../index.html">
+        <span class="brand-name">La Madrina</span>
+        <span class="brand-type">Apart Hotel</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#complejo">El complejo</a>
+        <a href="../unidades.html">Unidades</a>
+        <a href="../index.html#galeria">Galeria</a>
+        <a class="button" data-whatsapp href="#">Consultar</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="hero-copy">
+          <p class="kicker">Cabana Farolito</p>
+          <h1>Farolito</h1>
+          <p>
+            Una cabana con vista abierta a las montanas, espacios interiores luminosos,
+            comedor integrado, cocina equipada y terraza para disfrutar el paisaje.
+          </p>
+          <div class="meta">
+            <span>Vista a la montana</span>
+            <span>Cocina equipada</span>
+            <span>Terraza privada</span>
+          </div>
+          <a class="button" data-whatsapp href="#">Consultar Farolito</a>
+        </div>
+        <div class="hero-media">
+          <img src="../assets/farolito-exterior.jpeg" alt="Exterior de la cabana Farolito">
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="inner two-col">
+          <div>
+            <p class="kicker">Amenities</p>
+            <h2>Interior luminoso y salida al paisaje.</h2>
+            <p>
+              Farolito combina comedor, living y cocina en una distribucion practica,
+              con detalles de madera y una terraza que mira hacia el complejo y los cerros.
+            </p>
+          </div>
+          <ul class="amenities">
+            <li>Comedor integrado</li>
+            <li>Cocina equipada</li>
+            <li>Smart TV</li>
+            <li>Bano completo</li>
+            <li>Living con sillones</li>
+            <li>Terraza con vista a las montanas</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="fotos">
+        <div class="inner">
+          <p class="kicker">Fotos</p>
+          <h2>Galeria de Farolito</h2>
+          <div class="gallery">
+            <img src="../assets/farolito-exterior.jpeg" alt="Exterior de Farolito">
+            <img src="../assets/farolito-comedor-cocina.jpeg" alt="Comedor y cocina de Farolito">
+            <img src="../assets/farolito-tv.jpeg" alt="TV y living de Farolito">
+            <img src="../assets/farolito-cocina.jpeg" alt="Cocina equipada de Farolito">
+            <img src="../assets/farolito-bano.jpeg" alt="Bano completo de Farolito">
+            <img src="../assets/farolito-living.jpeg" alt="Living de Farolito">
+            <img src="../assets/farolito-terraza.jpeg" alt="Terraza de Farolito">
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Consultar disponibilidad de Farolito</h2>
+        <p>Envianos tus fechas y cantidad de huespedes para confirmar si Farolito esta disponible.</p>
+        <a class="button" data-whatsapp href="#">Escribir por WhatsApp</a>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>La Madrina Apart Hotel</span>
+        <span><a href="../unidades.html">Volver a unidades</a></span>
+      </div>
+    </footer>
+
+    <script>
+      const whatsappText = "Hola! Quisiera consultar disponibilidad para la cabana Farolito de La Madrina.";
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
+      document.querySelectorAll("[data-whatsapp]").forEach((link) => {
+        link.href = whatsappUrl;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+      });
+    </script>
+  </body>
+</html>

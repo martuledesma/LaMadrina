@@ -225,31 +225,67 @@
         font-size: 1.04rem;
       }
 
-      .unit-list {
+      .capacity-sections {
+        display: grid;
+        gap: 58px;
+      }
+
+      .capacity-group {
         display: grid;
         gap: 18px;
       }
 
-      .unit-row {
+      .capacity-title {
         display: grid;
-        grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
-        gap: 0;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        overflow: hidden;
-        background: var(--white);
+        grid-template-columns: minmax(0, 0.55fr) minmax(260px, 0.45fr);
+        gap: 24px;
+        align-items: end;
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
       }
 
-      .unit-row img {
+      .capacity-title h3 {
+        margin-bottom: 0;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+      }
+
+      .capacity-title p {
+        margin-bottom: 0;
+      }
+
+      .cabin-choice-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+
+      .cabin-choice {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        overflow: hidden;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .cabin-choice:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+
+      .cabin-choice img {
         height: 100%;
-        min-height: 310px;
+        min-height: 230px;
+        aspect-ratio: 4 / 3;
         object-fit: cover;
       }
 
-      .unit-info {
+      .cabin-info {
         padding: 30px;
         display: grid;
-        align-content: center;
+        align-content: space-between;
+        gap: 22px;
       }
 
       .capacity {
@@ -341,16 +377,8 @@
 
         .hero,
         .section-head,
-        .unit-row {
+        .capacity-title {
           grid-template-columns: 1fr;
-        }
-
-        .hero-media {
-          min-height: 340px;
-        }
-
-        .unit-row img {
-          min-height: 250px;
         }
 
         .compare-grid {
@@ -365,7 +393,7 @@
         }
 
         .hero-copy,
-        .unit-info {
+        .cabin-info {
           padding: 24px;
         }
 
@@ -425,94 +453,119 @@
             </p>
           </div>
 
-          <div class="unit-list">
-            <article class="unit-row">
-              <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
-              <div class="unit-info">
-                <span class="capacity">Hasta 6 personas</span>
-                <h3>Familias y grupos</h3>
-                <p>
-                  La opcion mas amplia para viajes familiares o grupos de amigos que necesitan
-                  mayor comodidad, circulacion y una estadia organizada.
-                </p>
-                <ul class="amenity-list">
-                  <li>Cocina equipada</li>
-                  <li>Espacio exterior privado</li>
-                  <li>Ambientes amplios</li>
-                  <li>Estacionamiento</li>
-                </ul>
-                <div class="section-actions">
-                  <a class="button" href="cabanas/familias-grupos.html">Ver detalle</a>
-                  <a class="button secondary" data-whatsapp href="#">Consultar</a>
+          <div class="capacity-sections">
+            <section class="capacity-group" id="hasta-6">
+              <div class="capacity-title">
+                <div>
+                  <span class="capacity">Hasta 6 personas</span>
+                  <h3>Para familias grandes o grupos.</h3>
                 </div>
+                <p>Primero elegis la capacidad. Despues ves la cabana disponible para ese tipo de viaje.</p>
               </div>
-            </article>
+              <div class="cabin-choice-grid">
+                <article class="cabin-choice">
+                  <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
+                  <div class="cabin-info">
+                    <div>
+                      <h3>Familias y grupos</h3>
+                      <p>Ambientes amplios para compartir, cocinar y descansar con comodidad.</p>
+                      <ul class="amenity-list">
+                        <li>Cocina equipada</li>
+                        <li>Espacio exterior privado</li>
+                        <li>Ambientes amplios</li>
+                        <li>Estacionamiento</li>
+                      </ul>
+                    </div>
+                    <div class="section-actions">
+                      <a class="button" href="cabanas/familias-grupos.html">Ver detalle</a>
+                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
 
-            <article class="unit-row">
-              <img src="assets/penca-living.jpeg" alt="Living de la cabana Penca">
-              <div class="unit-info">
-                <span class="capacity">3 a 4 personas</span>
-                <h3>Penca</h3>
-                <p>
-                  Una cabana luminosa y calida con living integrado, cocina equipada,
-                  bano completo y terraza con vista al entorno de montana.
-                </p>
-                <ul class="amenity-list">
-                  <li>Cocina equipada</li>
-                  <li>Living con sillones</li>
-                  <li>Smart TV</li>
-                  <li>Terraza con vista</li>
-                </ul>
-                <div class="section-actions">
-                  <a class="button" href="cabanas/penca.html">Ver detalle</a>
-                  <a class="button secondary" data-whatsapp href="#">Consultar</a>
+            <section class="capacity-group" id="3-a-4">
+              <div class="capacity-title">
+                <div>
+                  <span class="capacity">3 a 4 personas</span>
+                  <h3>Para escapadas familiares o amigos.</h3>
                 </div>
+                <p>En esta capacidad podes seleccionar una cabana especifica segun fotos, vista y distribucion.</p>
               </div>
-            </article>
+              <div class="cabin-choice-grid">
+                <article class="cabin-choice">
+                  <img src="assets/penca-living.jpeg" alt="Living de la cabana Penca">
+                  <div class="cabin-info">
+                    <div>
+                      <h3>Penca</h3>
+                      <p>Living calido, cocina equipada, bano completo y terraza con vista al entorno.</p>
+                      <ul class="amenity-list">
+                        <li>Cocina equipada</li>
+                        <li>Living con sillones</li>
+                        <li>Smart TV</li>
+                        <li>Terraza con vista</li>
+                      </ul>
+                    </div>
+                    <div class="section-actions">
+                      <a class="button" href="cabanas/penca.html">Ver detalle</a>
+                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                    </div>
+                  </div>
+                </article>
 
-            <article class="unit-row">
-              <img src="assets/farolito-exterior.jpeg" alt="Exterior de la cabana Farolito">
-              <div class="unit-info">
-                <span class="capacity">3 a 4 personas</span>
-                <h3>Farolito</h3>
-                <p>
-                  Una cabana con vista privilegiada al paisaje, comedor integrado,
-                  cocina equipada, living, bano completo y terraza para disfrutar afuera.
-                </p>
-                <ul class="amenity-list">
-                  <li>Cocina equipada</li>
-                  <li>Comedor integrado</li>
-                  <li>Smart TV</li>
-                  <li>Terraza con vista</li>
-                </ul>
-                <div class="section-actions">
-                  <a class="button" href="cabanas/farolito.html">Ver detalle</a>
-                  <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                </div>
+                <article class="cabin-choice">
+                  <img src="assets/farolito-exterior.jpeg" alt="Exterior de la cabana Farolito">
+                  <div class="cabin-info">
+                    <div>
+                      <h3>Farolito</h3>
+                      <p>Vista privilegiada, comedor integrado, cocina equipada, living y terraza.</p>
+                      <ul class="amenity-list">
+                        <li>Cocina equipada</li>
+                        <li>Comedor integrado</li>
+                        <li>Smart TV</li>
+                        <li>Terraza con vista</li>
+                      </ul>
+                    </div>
+                    <div class="section-actions">
+                      <a class="button" href="cabanas/farolito.html">Ver detalle</a>
+                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                    </div>
+                  </div>
+                </article>
               </div>
-            </article>
+            </section>
 
-            <article class="unit-row">
-              <img src="assets/la-madrina-vino.jpeg" alt="Detalle de descanso en La Madrina">
-              <div class="unit-info">
-                <span class="capacity">2 a 3 personas</span>
-                <h3>Parejas y descanso</h3>
-                <p>
-                  Una unidad mas intima para escapadas de pareja, viajes individuales o dias de
-                  desconexion con el valle como escenario principal.
-                </p>
-                <ul class="amenity-list">
-                  <li>Ambiente intimo</li>
-                  <li>Cocina equipada</li>
-                  <li>Espacio exterior</li>
-                  <li>Climatizacion</li>
-                </ul>
-                <div class="section-actions">
-                  <a class="button" href="cabanas/parejas-descanso.html">Ver detalle</a>
-                  <a class="button secondary" data-whatsapp href="#">Consultar</a>
+            <section class="capacity-group" id="2-a-3">
+              <div class="capacity-title">
+                <div>
+                  <span class="capacity">2 a 3 personas</span>
+                  <h3>Para parejas o descanso tranquilo.</h3>
                 </div>
+                <p>Opciones mas intimas para quienes buscan una estadia simple, privada y comoda.</p>
               </div>
-            </article>
+              <div class="cabin-choice-grid">
+                <article class="cabin-choice">
+                  <img src="assets/la-madrina-vino.jpeg" alt="Detalle de descanso en La Madrina">
+                  <div class="cabin-info">
+                    <div>
+                      <h3>Parejas y descanso</h3>
+                      <p>Una unidad mas intima para escapadas de pareja o dias de desconexion.</p>
+                      <ul class="amenity-list">
+                        <li>Ambiente intimo</li>
+                        <li>Cocina equipada</li>
+                        <li>Espacio exterior</li>
+                        <li>Climatizacion</li>
+                      </ul>
+                    </div>
+                    <div class="section-actions">
+                      <a class="button" href="cabanas/parejas-descanso.html">Ver detalle</a>
+                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
           </div>
         </div>
       </section>

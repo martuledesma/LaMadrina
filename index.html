@@ -530,30 +530,21 @@
         background: #eef4e8;
       }
 
-      .map-placeholder {
+      .map-frame {
         min-height: 380px;
-        display: grid;
-        place-items: center;
-        padding: 24px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background:
-          linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
-          url("assets/la-madrina-complejo-dia.jpeg") center / cover;
-      }
-
-      .map-box {
-        width: min(420px, 100%);
-        padding: 28px;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.92);
+        background: var(--white);
         box-shadow: var(--shadow);
+        overflow: hidden;
       }
 
-      .map-box p {
-        margin-bottom: 18px;
-        color: var(--muted);
-        line-height: 1.55;
+      .map-frame iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 380px;
+        display: block;
+        border: 0;
       }
 
       .cta-band {
@@ -731,8 +722,7 @@
         }
 
         .intro-panel,
-        .location-copy,
-        .map-box {
+        .location-copy {
           padding: 24px;
         }
 
@@ -983,15 +973,14 @@
               <a class="button secondary" href="#inicio">Volver arriba</a>
             </div>
           </div>
-          <div class="map-placeholder" aria-label="Espacio reservado para mapa">
-            <div class="map-box">
-              <h3>Mapa interactivo</h3>
-              <p>
-                Este bloque queda listo para insertar el enlace oficial de Google Maps de La Madrina
-                cuando tengamos la ficha o direccion exacta.
-              </p>
-              <a class="text-link" href="#galeria">Ver fotos del lugar</a>
-            </div>
+          <div class="map-frame" aria-label="Mapa de La Madrina">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14222.153965187437!2d-65.69985829356787!3d-26.851126834847406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9422230004ee1edf%3A0xf31bd4cf93602bbd!2sLa%20Madrina!5e0!3m2!1ses!2sar!4v1784560262444!5m2!1ses!2sar"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Ubicacion de La Madrina en Google Maps"
+            ></iframe>
           </div>
         </div>
       </section>

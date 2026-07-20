@@ -269,6 +269,10 @@
         transition: transform 160ms ease, box-shadow 160ms ease;
       }
 
+      .cabin-choice.compact {
+        width: min(360px, 100%);
+      }
+
       .cabin-choice:hover {
         transform: translateY(-3px);
         box-shadow: var(--shadow);
@@ -463,7 +467,7 @@
                 <p>Primero elegis la capacidad. Despues ves la cabana disponible para ese tipo de viaje.</p>
               </div>
               <div class="cabin-choice-grid">
-                <article class="cabin-choice">
+                <article class="cabin-choice compact">
                   <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
                   <div class="cabin-info">
                     <div>

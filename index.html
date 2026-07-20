@@ -391,6 +391,36 @@
         gap: 16px;
       }
 
+      .home-capacity-groups {
+        display: grid;
+        gap: 34px;
+      }
+
+      .home-capacity-group {
+        display: grid;
+        gap: 16px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+      }
+
+      .home-capacity-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.55fr) minmax(240px, 0.45fr);
+        gap: 22px;
+        align-items: end;
+      }
+
+      .home-capacity-head h3 {
+        margin-bottom: 0;
+        font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+      }
+
+      .home-capacity-head p {
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
       .unit-card,
       .service-card {
         border: 1px solid var(--line);
@@ -723,6 +753,7 @@
         }
 
         .units-grid,
+        .home-capacity-head,
         .services-grid,
         .image-stack {
           grid-template-columns: 1fr;
@@ -829,81 +860,109 @@
             </div>
           </div>
 
-          <div class="units-grid">
-            <a class="unit-card" href="cabanas/familias-grupos.html">
-              <div class="unit-media" style="background-image:url('assets/la-madrina-complejo-dia.jpeg')"></div>
-              <div class="unit-body">
+          <div class="home-capacity-groups">
+            <section class="home-capacity-group">
+              <div class="home-capacity-head">
                 <div>
                   <span class="capacity">Hasta 6 personas</span>
-                  <h3>Sauco</h3>
-                  <p>
-                    La opcion amplia para familias grandes o grupos que buscan comodidad
-                    durante estadias de varios dias.
-                  </p>
+                  <h3>Para familias grandes o grupos</h3>
                 </div>
-                <span class="text-link">Ver pagina de la cabana</span>
+                <p>Una opcion amplia para viajar con mas comodidad y espacios para compartir.</p>
               </div>
-            </a>
+              <div class="units-grid">
+                <a class="unit-card" href="cabanas/familias-grupos.html">
+                  <div class="unit-media" style="background-image:url('assets/la-madrina-complejo-dia.jpeg')"></div>
+                  <div class="unit-body">
+                    <div>
+                      <h3>Sauco</h3>
+                      <p>
+                        La opcion amplia para familias grandes o grupos que buscan comodidad
+                        durante estadias de varios dias.
+                      </p>
+                    </div>
+                    <span class="text-link">Ver pagina de la cabana</span>
+                  </div>
+                </a>
+              </div>
+            </section>
 
-            <a class="unit-card" href="cabanas/penca.html">
-              <div class="unit-media" style="background-image:url('assets/penca-living.jpeg')"></div>
-              <div class="unit-body">
+            <section class="home-capacity-group">
+              <div class="home-capacity-head">
                 <div>
                   <span class="capacity">3 a 4 personas</span>
-                  <h3>Penca</h3>
-                  <p>
-                    Living calido, cocina equipada, bano completo y terraza con vista para una
-                    escapada comoda en el valle.
-                  </p>
+                  <h3>Para escapadas familiares o amigos</h3>
                 </div>
-                <span class="text-link">Ver pagina de la cabana</span>
+                <p>Selecciona una cabana segun fotos, vista y distribucion interior.</p>
               </div>
-            </a>
+              <div class="units-grid">
+                <a class="unit-card" href="unidades.html#3-a-4">
+                  <div class="unit-media" style="background-image:url('assets/la-madrina-terraza.jpeg')"></div>
+                  <div class="unit-body">
+                    <div>
+                      <h3>Cardón</h3>
+                      <p>
+                        Una alternativa funcional para familias chicas o amigos, dentro de la
+                        misma capacidad que Farolito y Penca.
+                      </p>
+                    </div>
+                    <span class="text-link">Ver opciones</span>
+                  </div>
+                </a>
 
-            <a class="unit-card" href="unidades.html#3-a-4">
-              <div class="unit-media" style="background-image:url('assets/la-madrina-terraza.jpeg')"></div>
-              <div class="unit-body">
-                <div>
-                  <span class="capacity">3 a 4 personas</span>
-                  <h3>Cardón</h3>
-                  <p>
-                    Una alternativa funcional para familias chicas o amigos, dentro de la
-                    misma capacidad que Farolito y Penca.
-                  </p>
-                </div>
-                <span class="text-link">Ver opciones</span>
+                <a class="unit-card" href="cabanas/farolito.html">
+                  <div class="unit-media" style="background-image:url('assets/farolito-exterior.jpeg')"></div>
+                  <div class="unit-body">
+                    <div>
+                      <h3>Farolito</h3>
+                      <p>
+                        Unidad luminosa con comedor, cocina equipada, living, bano completo
+                        y terraza con vista al paisaje.
+                      </p>
+                    </div>
+                    <span class="text-link">Ver pagina de la cabana</span>
+                  </div>
+                </a>
+
+                <a class="unit-card" href="cabanas/penca.html">
+                  <div class="unit-media" style="background-image:url('assets/penca-living.jpeg')"></div>
+                  <div class="unit-body">
+                    <div>
+                      <h3>Penca</h3>
+                      <p>
+                        Living calido, cocina equipada, bano completo y terraza con vista para una
+                        escapada comoda en el valle.
+                      </p>
+                    </div>
+                    <span class="text-link">Ver pagina de la cabana</span>
+                  </div>
+                </a>
               </div>
-            </a>
+            </section>
 
-            <a class="unit-card" href="cabanas/farolito.html">
-              <div class="unit-media" style="background-image:url('assets/farolito-exterior.jpeg')"></div>
-              <div class="unit-body">
-                <div>
-                  <span class="capacity">3 a 4 personas</span>
-                  <h3>Farolito</h3>
-                  <p>
-                    Unidad luminosa con comedor, cocina equipada, living, bano completo
-                    y terraza con vista al paisaje.
-                  </p>
-                </div>
-                <span class="text-link">Ver pagina de la cabana</span>
-              </div>
-            </a>
-
-            <a class="unit-card" href="unidades.html#2-a-3">
-              <div class="unit-media" style="background-image:url('assets/la-madrina-vino.jpeg')"></div>
-              <div class="unit-body">
+            <section class="home-capacity-group">
+              <div class="home-capacity-head">
                 <div>
                   <span class="capacity">2 a 3 personas</span>
-                  <h3>Amancay, Chilca y Amaicha</h3>
-                  <p>
-                    Opciones intimas para parejas, viajes individuales o descanso tranquilo
-                    en una base comoda y bien ubicada.
-                  </p>
+                  <h3>Para parejas o descanso tranquilo</h3>
                 </div>
-                <span class="text-link">Ver pagina de la cabana</span>
+                <p>Opciones intimas para viajes de pareja, estadias simples o desconexion.</p>
               </div>
-            </a>
+              <div class="units-grid">
+                <a class="unit-card" href="unidades.html#2-a-3">
+                  <div class="unit-media" style="background-image:url('assets/la-madrina-vino.jpeg')"></div>
+                  <div class="unit-body">
+                    <div>
+                      <h3>Amancay, Chilca y Amaicha</h3>
+                      <p>
+                        Opciones intimas para parejas, viajes individuales o descanso tranquilo
+                        en una base comoda y bien ubicada.
+                      </p>
+                    </div>
+                    <span class="text-link">Ver opciones</span>
+                  </div>
+                </a>
+              </div>
+            </section>
           </div>
         </div>
       </section>

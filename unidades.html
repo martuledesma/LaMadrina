@@ -255,8 +255,13 @@
 
       .cabin-choice-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% - 16px) / 2);
         gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        scroll-snap-type: x mandatory;
+        scrollbar-color: rgba(23, 107, 69, 0.45) transparent;
       }
 
       .cabin-choice {
@@ -266,7 +271,15 @@
         border-radius: 8px;
         background: var(--white);
         overflow: hidden;
+        scroll-snap-align: start;
         transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .carousel-hint {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 750;
       }
 
       .cabin-choice:hover {
@@ -275,7 +288,7 @@
       }
 
       #hasta-6 .cabin-choice-grid {
-        grid-template-columns: minmax(280px, 820px);
+        grid-auto-columns: minmax(280px, 820px);
       }
 
       #hasta-6 .cabin-choice {
@@ -400,7 +413,11 @@
           grid-template-columns: 1fr;
         }
 
-        #hasta-6 .cabin-choice-grid,
+        #hasta-6 .cabin-choice-grid {
+          grid-auto-columns: minmax(280px, 100%);
+          grid-template-columns: 1fr;
+        }
+
         #hasta-6 .cabin-choice {
           grid-template-columns: 1fr;
         }
@@ -412,6 +429,14 @@
       }
 
       @media (max-width: 560px) {
+        .cabin-choice-grid {
+          grid-auto-columns: minmax(260px, 86%);
+        }
+
+        #hasta-6 .cabin-choice-grid {
+          grid-auto-columns: minmax(260px, 100%);
+        }
+
         .hero {
           width: calc(100% - 28px);
           margin-top: 18px;
@@ -472,10 +497,6 @@
               <p class="kicker">Catalogo</p>
               <h2>Elegilas por capacidad.</h2>
             </div>
-            <p class="lead">
-              Cada unidad puede tener fotos y amenities propios. Por ahora dejamos la estructura
-              lista para completar con las imagenes reales de cada cabana.
-            </p>
           </div>
 
           <div class="capacity-sections">
@@ -579,6 +600,7 @@
                   </div>
                 </article>
               </div>
+              <p class="carousel-hint">Desliza para ver unidades.</p>
             </section>
 
             <section class="capacity-group" id="2-a-3">
@@ -650,6 +672,7 @@
                   </div>
                 </article>
               </div>
+              <p class="carousel-hint">Desliza para ver unidades.</p>
             </section>
           </div>
         </div>

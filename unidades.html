@@ -344,11 +344,22 @@
       #hasta-6 .cabin-choice-grid {
         grid-auto-flow: row;
         grid-auto-columns: initial;
-        grid-template-columns: minmax(0, 760px);
+        grid-template-columns: minmax(0, 940px);
         justify-content: start;
         overflow: visible;
         padding-bottom: 0;
         scroll-snap-type: none;
+      }
+
+      #hasta-6 .cabin-choice {
+        grid-template-columns: minmax(260px, 0.38fr) minmax(0, 0.62fr);
+        grid-template-rows: auto;
+        min-height: 310px;
+      }
+
+      #hasta-6 .cabin-choice img {
+        min-height: 100%;
+        aspect-ratio: auto;
       }
 
       .cabin-choice img {
@@ -494,6 +505,16 @@
           grid-template-columns: 1fr;
         }
 
+        #hasta-6 .cabin-choice {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+
+        #hasta-6 .cabin-choice img {
+          min-height: 230px;
+          aspect-ratio: 4 / 3;
+        }
+
       }
 
       @media (max-width: 560px) {
@@ -567,33 +588,77 @@
           </div>
 
           <div class="capacity-sections">
-            <section class="capacity-group" id="hasta-6">
+            <section class="capacity-group" id="2-a-3">
               <div class="capacity-title">
                 <div>
-                  <span class="capacity">Hasta 6 personas</span>
-                  <h3>Para familias grandes o grupos.</h3>
+                  <span class="capacity">2 a 3 personas</span>
+                  <h3>Para parejas o descanso tranquilo.</h3>
                 </div>
               </div>
-              <div class="cabin-choice-grid">
-                <article class="cabin-choice">
-                  <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
-                  <div class="cabin-info">
-                    <div>
-                      <h3>Sauco</h3>
-                      <p>La opcion amplia para familias grandes o grupos que buscan comodidad.</p>
-                      <ul class="amenity-list">
-                        <li>Cocina equipada</li>
-                        <li>Espacio exterior privado</li>
-                        <li>Ambientes amplios</li>
-                        <li>Estacionamiento</li>
-                      </ul>
+              <div class="carousel-shell" data-carousel>
+                <button class="carousel-arrow prev" type="button" aria-label="Ver unidades anteriores" data-carousel-prev>‹</button>
+                <div class="cabin-choice-grid" data-carousel-track>
+                  <article class="cabin-choice">
+                    <img src="assets/la-madrina-vino.jpeg" alt="Detalle de descanso en La Madrina">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Amancay</h3>
+                        <p>Una opcion intima para escapadas de pareja o dias de descanso tranquilo.</p>
+                        <ul class="amenity-list">
+                          <li>Ambiente intimo</li>
+                          <li>Cocina equipada</li>
+                          <li>Espacio exterior</li>
+                          <li>Climatizacion</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/amancay.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
                     </div>
-                    <div class="section-actions">
-                      <a class="button" href="cabanas/sauco.html">Ver</a>
-                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                  </article>
+
+                  <article class="cabin-choice">
+                    <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Chilca</h3>
+                        <p>Una cabana compacta y comoda para estadias simples en Tafi del Valle.</p>
+                        <ul class="amenity-list">
+                          <li>Cocina equipada</li>
+                          <li>Area de descanso</li>
+                          <li>Espacio exterior</li>
+                          <li>Climatizacion</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/chilca.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
                     </div>
-                  </div>
-                </article>
+                  </article>
+
+                  <article class="cabin-choice">
+                    <img src="assets/la-madrina-terraza.jpeg" alt="Terraza privada en La Madrina">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Amaicha</h3>
+                        <p>Una opcion tranquila para desconectar, descansar y disfrutar el entorno.</p>
+                        <ul class="amenity-list">
+                          <li>Ambiente intimo</li>
+                          <li>Cocina equipada</li>
+                          <li>Espacio exterior</li>
+                          <li>Climatizacion</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/amaicha.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <button class="carousel-arrow next" type="button" aria-label="Ver mas unidades" data-carousel-next>›</button>
               </div>
             </section>
 
@@ -671,77 +736,33 @@
               </div>
             </section>
 
-            <section class="capacity-group" id="2-a-3">
+            <section class="capacity-group" id="hasta-6">
               <div class="capacity-title">
                 <div>
-                  <span class="capacity">2 a 3 personas</span>
-                  <h3>Para parejas o descanso tranquilo.</h3>
+                  <span class="capacity">Hasta 6 personas</span>
+                  <h3>Para familias grandes o grupos.</h3>
                 </div>
               </div>
-              <div class="carousel-shell" data-carousel>
-                <button class="carousel-arrow prev" type="button" aria-label="Ver unidades anteriores" data-carousel-prev>‹</button>
-                <div class="cabin-choice-grid" data-carousel-track>
-                  <article class="cabin-choice">
-                    <img src="assets/la-madrina-vino.jpeg" alt="Detalle de descanso en La Madrina">
-                    <div class="cabin-info">
-                      <div>
-                        <h3>Amancay</h3>
-                        <p>Una opcion intima para escapadas de pareja o dias de descanso tranquilo.</p>
-                        <ul class="amenity-list">
-                          <li>Ambiente intimo</li>
-                          <li>Cocina equipada</li>
-                          <li>Espacio exterior</li>
-                          <li>Climatizacion</li>
-                        </ul>
-                      </div>
-                      <div class="section-actions">
-                        <a class="button" href="cabanas/amancay.html">Ver</a>
-                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                      </div>
+              <div class="cabin-choice-grid">
+                <article class="cabin-choice">
+                  <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
+                  <div class="cabin-info">
+                    <div>
+                      <h3>Sauco</h3>
+                      <p>La opcion amplia para familias grandes o grupos que buscan comodidad.</p>
+                      <ul class="amenity-list">
+                        <li>Cocina equipada</li>
+                        <li>Espacio exterior privado</li>
+                        <li>Ambientes amplios</li>
+                        <li>Estacionamiento</li>
+                      </ul>
                     </div>
-                  </article>
-
-                  <article class="cabin-choice">
-                    <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
-                    <div class="cabin-info">
-                      <div>
-                        <h3>Chilca</h3>
-                        <p>Una cabana compacta y comoda para estadias simples en Tafi del Valle.</p>
-                        <ul class="amenity-list">
-                          <li>Cocina equipada</li>
-                          <li>Area de descanso</li>
-                          <li>Espacio exterior</li>
-                          <li>Climatizacion</li>
-                        </ul>
-                      </div>
-                      <div class="section-actions">
-                        <a class="button" href="cabanas/chilca.html">Ver</a>
-                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                      </div>
+                    <div class="section-actions">
+                      <a class="button" href="cabanas/sauco.html">Ver</a>
+                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
                     </div>
-                  </article>
-
-                  <article class="cabin-choice">
-                    <img src="assets/la-madrina-terraza.jpeg" alt="Terraza privada en La Madrina">
-                    <div class="cabin-info">
-                      <div>
-                        <h3>Amaicha</h3>
-                        <p>Una opcion tranquila para desconectar, descansar y disfrutar el entorno.</p>
-                        <ul class="amenity-list">
-                          <li>Ambiente intimo</li>
-                          <li>Cocina equipada</li>
-                          <li>Espacio exterior</li>
-                          <li>Climatizacion</li>
-                        </ul>
-                      </div>
-                      <div class="section-actions">
-                        <a class="button" href="cabanas/amaicha.html">Ver</a>
-                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <button class="carousel-arrow next" type="button" aria-label="Ver mas unidades" data-carousel-next>›</button>
+                  </div>
+                </article>
               </div>
             </section>
           </div>

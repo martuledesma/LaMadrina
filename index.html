@@ -381,10 +381,6 @@
         height: clamp(430px, 50vw, 640px);
       }
 
-      .photo-carousel.is-gallery {
-        height: clamp(320px, 38vw, 480px);
-      }
-
       .photo-carousel-track {
         height: 100%;
         display: flex;
@@ -475,6 +471,74 @@
       .photo-dot.is-active {
         width: 22px;
         background: var(--white);
+      }
+
+      .gallery-mosaic {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-rows: 210px;
+        gap: 14px;
+      }
+
+      .gallery-tile {
+        position: relative;
+        min-height: 210px;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #d9d9d9;
+        box-shadow: 0 16px 42px rgba(23, 31, 22, 0.1);
+      }
+
+      .gallery-tile.is-featured {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .gallery-tile.is-wide {
+        grid-column: span 2;
+      }
+
+      .gallery-tile img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform 260ms ease;
+      }
+
+      .gallery-tile:focus {
+        outline: 3px solid rgba(23, 107, 69, 0.34);
+        outline-offset: 3px;
+      }
+
+      .gallery-tile figcaption {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: flex-end;
+        padding: 18px;
+        background: linear-gradient(
+          rgba(23, 107, 69, 0.16),
+          rgba(23, 107, 69, 0.78)
+        );
+        color: var(--white);
+        font-size: 0.95rem;
+        font-weight: 850;
+        opacity: 0;
+        transition: opacity 180ms ease;
+      }
+
+      .gallery-tile:hover img,
+      .gallery-tile:focus img,
+      .gallery-tile:focus-within img {
+        transform: scale(1.04);
+      }
+
+      .gallery-tile:hover figcaption,
+      .gallery-tile:focus figcaption,
+      .gallery-tile:focus-within figcaption {
+        opacity: 1;
       }
 
       .units-grid {
@@ -822,8 +886,14 @@
           height: min(520px, 66vh);
         }
 
-        .photo-carousel.is-gallery {
-          height: min(390px, 52vh);
+        .gallery-mosaic {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-auto-rows: 220px;
+        }
+
+        .gallery-tile.is-featured,
+        .gallery-tile.is-wide {
+          grid-column: span 2;
         }
       }
 
@@ -886,10 +956,6 @@
           height: min(430px, 70vh);
         }
 
-        .photo-carousel.is-gallery {
-          height: min(320px, 56vh);
-        }
-
         .photo-arrow {
           width: 36px;
           height: 36px;
@@ -900,6 +966,21 @@
           left: 14px;
           bottom: 14px;
           max-width: none;
+        }
+
+        .gallery-mosaic {
+          grid-template-columns: 1fr;
+          grid-auto-rows: 260px;
+        }
+
+        .gallery-tile.is-featured,
+        .gallery-tile.is-wide {
+          grid-column: auto;
+          grid-row: auto;
+        }
+
+        .gallery-tile figcaption {
+          opacity: 1;
         }
 
         .section {
@@ -1099,44 +1180,39 @@
             </div>
           </div>
 
-          <div class="photo-carousel is-gallery" data-photo-carousel aria-label="Galeria de La Madrina">
-            <div class="photo-carousel-track" data-photo-track>
-              <figure class="photo-slide">
-                <img src="assets/la-madrina-complejo-dia.jpeg" alt="Calle interna del complejo La Madrina">
-                <figcaption>Complejo integrado al paisaje</figcaption>
-              </figure>
-              <figure class="photo-slide">
-                <img src="assets/la-madrina-complejo-calle.jpeg" alt="Calle interna de La Madrina con vegetacion y montanas">
-                <figcaption>Senderos y verde del complejo</figcaption>
-              </figure>
-              <figure class="photo-slide">
-                <img src="assets/la-madrina-terraza.jpeg" alt="Terraza con mesa y vista al valle">
-                <figcaption>Terrazas privadas</figcaption>
-              </figure>
-              <figure class="photo-slide">
-                <img src="assets/la-madrina-familia-terraza.jpeg" alt="Familia descansando en terraza con vista a las montanas">
-                <figcaption>Espacios para compartir</figcaption>
-              </figure>
-              <figure class="photo-slide">
-                <img src="assets/la-madrina-vino-vista.jpeg" alt="Persona con copa de vino mirando el paisaje">
-                <figcaption>Momentos frente al valle</figcaption>
-              </figure>
-              <figure class="photo-slide">
-                <img src="assets/la-madrina-vino.jpeg" alt="Detalle de copa de vino y aperitivos">
-                <figcaption>Momentos de descanso</figcaption>
-              </figure>
-              <figure class="photo-slide">
-                <img src="assets/la-madrina-amaicha-bienvenida.jpeg" alt="Detalle de bienvenida en la cabana Amaicha">
-                <figcaption>Bienvenida en la unidad</figcaption>
-              </figure>
-              <figure class="photo-slide">
-                <img src="assets/la-madrina-desayuno.jpeg" alt="Desayuno con medialunas, frutas y huevos">
-                <figcaption>Desayunos para empezar el dia</figcaption>
-              </figure>
-            </div>
-            <button class="photo-arrow prev" type="button" aria-label="Foto anterior" data-photo-prev>‹</button>
-            <button class="photo-arrow next" type="button" aria-label="Foto siguiente" data-photo-next>›</button>
-            <div class="photo-dots" data-photo-dots aria-label="Seleccionar foto"></div>
+          <div class="gallery-mosaic" aria-label="Galeria de La Madrina">
+            <figure class="gallery-tile is-featured" tabindex="0">
+              <img src="assets/la-madrina-complejo-dia.jpeg" alt="Calle interna del complejo La Madrina">
+              <figcaption>Complejo integrado al paisaje</figcaption>
+            </figure>
+            <figure class="gallery-tile" tabindex="0">
+              <img src="assets/la-madrina-complejo-calle.jpeg" alt="Calle interna de La Madrina con vegetacion y montanas">
+              <figcaption>Senderos y verde del complejo</figcaption>
+            </figure>
+            <figure class="gallery-tile" tabindex="0">
+              <img src="assets/la-madrina-terraza.jpeg" alt="Terraza con mesa y vista al valle">
+              <figcaption>Terrazas privadas</figcaption>
+            </figure>
+            <figure class="gallery-tile" tabindex="0">
+              <img src="assets/la-madrina-familia-terraza.jpeg" alt="Familia descansando en terraza con vista a las montanas">
+              <figcaption>Espacios para compartir</figcaption>
+            </figure>
+            <figure class="gallery-tile" tabindex="0">
+              <img src="assets/la-madrina-vino-vista.jpeg" alt="Persona con copa de vino mirando el paisaje">
+              <figcaption>Momentos frente al valle</figcaption>
+            </figure>
+            <figure class="gallery-tile is-wide" tabindex="0">
+              <img src="assets/la-madrina-vino.jpeg" alt="Detalle de copa de vino y aperitivos">
+              <figcaption>Momentos de descanso</figcaption>
+            </figure>
+            <figure class="gallery-tile" tabindex="0">
+              <img src="assets/la-madrina-amaicha-bienvenida.jpeg" alt="Detalle de bienvenida en la cabana Amaicha">
+              <figcaption>Bienvenida en la unidad</figcaption>
+            </figure>
+            <figure class="gallery-tile" tabindex="0">
+              <img src="assets/la-madrina-desayuno.jpeg" alt="Desayuno con medialunas, frutas y huevos">
+              <figcaption>Desayunos para empezar el dia</figcaption>
+            </figure>
           </div>
         </div>
       </section>

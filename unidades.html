@@ -269,13 +269,24 @@
         transition: transform 160ms ease, box-shadow 160ms ease;
       }
 
-      .cabin-choice.compact {
-        width: min(360px, 100%);
-      }
-
       .cabin-choice:hover {
         transform: translateY(-3px);
         box-shadow: var(--shadow);
+      }
+
+      #hasta-6 .cabin-choice-grid {
+        grid-template-columns: minmax(280px, 820px);
+      }
+
+      #hasta-6 .cabin-choice {
+        grid-template-columns: minmax(260px, 0.44fr) minmax(0, 0.56fr);
+        grid-template-rows: auto;
+      }
+
+      #hasta-6 .cabin-choice img {
+        height: 100%;
+        min-height: 100%;
+        aspect-ratio: auto;
       }
 
       .cabin-choice img {
@@ -388,6 +399,16 @@
         .compare-grid {
           grid-template-columns: 1fr;
         }
+
+        #hasta-6 .cabin-choice-grid,
+        #hasta-6 .cabin-choice {
+          grid-template-columns: 1fr;
+        }
+
+        #hasta-6 .cabin-choice img {
+          min-height: 230px;
+          aspect-ratio: 4 / 3;
+        }
       }
 
       @media (max-width: 560px) {
@@ -467,7 +488,7 @@
                 <p>Primero elegis la capacidad. Despues ves la cabana disponible para ese tipo de viaje.</p>
               </div>
               <div class="cabin-choice-grid">
-                <article class="cabin-choice compact">
+                <article class="cabin-choice">
                   <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
                   <div class="cabin-info">
                     <div>

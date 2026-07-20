@@ -264,7 +264,51 @@
         scrollbar-color: rgba(23, 107, 69, 0.45) transparent;
       }
 
+      .carousel-shell {
+        position: relative;
+      }
+
+      .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(23, 107, 69, 0.2);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--green);
+        font-size: 1.55rem;
+        font-weight: 900;
+        line-height: 1;
+        box-shadow: 0 14px 34px rgba(23, 31, 22, 0.14);
+        cursor: pointer;
+        transform: translateY(-50%);
+        transition: background 160ms ease, color 160ms ease, opacity 160ms ease;
+      }
+
+      .carousel-arrow:hover {
+        background: var(--green);
+        color: var(--white);
+      }
+
+      .carousel-arrow.prev {
+        left: -14px;
+      }
+
+      .carousel-arrow.next {
+        right: -14px;
+      }
+
+      .carousel-arrow[disabled] {
+        opacity: 0.35;
+        pointer-events: none;
+      }
+
       .cabin-choice {
+        position: relative;
         display: grid;
         grid-template-rows: auto 1fr;
         border: 1px solid var(--line);
@@ -272,6 +316,7 @@
         background: var(--white);
         overflow: hidden;
         scroll-snap-align: start;
+        cursor: pointer;
         transition: transform 160ms ease, box-shadow 160ms ease;
       }
 
@@ -314,6 +359,30 @@
         display: grid;
         align-content: space-between;
         gap: 22px;
+        transition: background 180ms ease, color 180ms ease;
+      }
+
+      .cabin-choice:hover .cabin-info,
+      .cabin-choice:active .cabin-info,
+      .cabin-choice:focus-within .cabin-info {
+        background: rgba(23, 107, 69, 0.88);
+        color: var(--white);
+      }
+
+      .cabin-choice:hover .cabin-info p,
+      .cabin-choice:active .cabin-info p,
+      .cabin-choice:focus-within .cabin-info p,
+      .cabin-choice:hover .amenity-list li,
+      .cabin-choice:active .amenity-list li,
+      .cabin-choice:focus-within .amenity-list li {
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .cabin-choice:hover .amenity-list li,
+      .cabin-choice:active .amenity-list li,
+      .cabin-choice:focus-within .amenity-list li {
+        border-color: rgba(255, 255, 255, 0.28);
+        background: rgba(255, 255, 255, 0.12);
       }
 
       .capacity {
@@ -398,6 +467,14 @@
       }
 
       @media (max-width: 860px) {
+        .carousel-arrow.prev {
+          left: 8px;
+        }
+
+        .carousel-arrow.next {
+          right: 8px;
+        }
+
         .nav {
           align-items: flex-start;
           flex-direction: column;
@@ -539,66 +616,70 @@
                 </div>
                 <p>En esta capacidad podes seleccionar una cabana especifica segun fotos, vista y distribucion.</p>
               </div>
-              <div class="cabin-choice-grid">
-                <article class="cabin-choice">
-                  <img src="assets/la-madrina-terraza.jpeg" alt="Terraza de La Madrina">
-                  <div class="cabin-info">
-                    <div>
-                      <h3>Cardón</h3>
-                      <p>Una alternativa funcional para familias chicas o amigos, con equipamiento completo.</p>
-                      <ul class="amenity-list">
-                        <li>Cocina equipada</li>
-                        <li>Espacio exterior</li>
-                        <li>Area de estar</li>
-                        <li>Estacionamiento</li>
-                      </ul>
+              <div class="carousel-shell" data-carousel>
+                <button class="carousel-arrow prev" type="button" aria-label="Ver unidades anteriores" data-carousel-prev>‹</button>
+                <div class="cabin-choice-grid" data-carousel-track>
+                  <article class="cabin-choice">
+                    <img src="assets/la-madrina-terraza.jpeg" alt="Terraza de La Madrina">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Cardón</h3>
+                        <p>Una alternativa funcional para familias chicas o amigos, con equipamiento completo.</p>
+                        <ul class="amenity-list">
+                          <li>Cocina equipada</li>
+                          <li>Espacio exterior</li>
+                          <li>Area de estar</li>
+                          <li>Estacionamiento</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/cardon.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
                     </div>
-                    <div class="section-actions">
-                      <a class="button" href="cabanas/cardon.html">Ver</a>
-                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                    </div>
-                  </div>
-                </article>
+                  </article>
 
-                <article class="cabin-choice">
-                  <img src="assets/farolito-exterior.jpeg" alt="Exterior de la cabana Farolito">
-                  <div class="cabin-info">
-                    <div>
-                      <h3>Farolito</h3>
-                      <p>Vista privilegiada, comedor integrado, cocina equipada, living y terraza.</p>
-                      <ul class="amenity-list">
-                        <li>Cocina equipada</li>
-                        <li>Comedor integrado</li>
-                        <li>Smart TV</li>
-                        <li>Terraza con vista</li>
-                      </ul>
+                  <article class="cabin-choice">
+                    <img src="assets/farolito-exterior.jpeg" alt="Exterior de la cabana Farolito">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Farolito</h3>
+                        <p>Vista privilegiada, comedor integrado, cocina equipada, living y terraza.</p>
+                        <ul class="amenity-list">
+                          <li>Cocina equipada</li>
+                          <li>Comedor integrado</li>
+                          <li>Smart TV</li>
+                          <li>Terraza con vista</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/farolito.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
                     </div>
-                    <div class="section-actions">
-                      <a class="button" href="cabanas/farolito.html">Ver</a>
-                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                    </div>
-                  </div>
-                </article>
+                  </article>
 
-                <article class="cabin-choice">
-                  <img src="assets/penca-living.jpeg" alt="Living de la cabana Penca">
-                  <div class="cabin-info">
-                    <div>
-                      <h3>Penca</h3>
-                      <p>Living calido, cocina equipada, bano completo y terraza con vista al entorno.</p>
-                      <ul class="amenity-list">
-                        <li>Cocina equipada</li>
-                        <li>Living con sillones</li>
-                        <li>Smart TV</li>
-                        <li>Terraza con vista</li>
-                      </ul>
+                  <article class="cabin-choice">
+                    <img src="assets/penca-living.jpeg" alt="Living de la cabana Penca">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Penca</h3>
+                        <p>Living calido, cocina equipada, bano completo y terraza con vista al entorno.</p>
+                        <ul class="amenity-list">
+                          <li>Cocina equipada</li>
+                          <li>Living con sillones</li>
+                          <li>Smart TV</li>
+                          <li>Terraza con vista</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/penca.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
                     </div>
-                    <div class="section-actions">
-                      <a class="button" href="cabanas/penca.html">Ver</a>
-                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                </div>
+                <button class="carousel-arrow next" type="button" aria-label="Ver mas unidades" data-carousel-next>›</button>
               </div>
               <p class="carousel-hint">Desliza para ver unidades.</p>
             </section>
@@ -611,66 +692,70 @@
                 </div>
                 <p>Opciones mas intimas para quienes buscan una estadia simple, privada y comoda.</p>
               </div>
-              <div class="cabin-choice-grid">
-                <article class="cabin-choice">
-                  <img src="assets/la-madrina-vino.jpeg" alt="Detalle de descanso en La Madrina">
-                  <div class="cabin-info">
-                    <div>
-                      <h3>Amancay</h3>
-                      <p>Una opcion intima para escapadas de pareja o dias de descanso tranquilo.</p>
-                      <ul class="amenity-list">
-                        <li>Ambiente intimo</li>
-                        <li>Cocina equipada</li>
-                        <li>Espacio exterior</li>
-                        <li>Climatizacion</li>
-                      </ul>
+              <div class="carousel-shell" data-carousel>
+                <button class="carousel-arrow prev" type="button" aria-label="Ver unidades anteriores" data-carousel-prev>‹</button>
+                <div class="cabin-choice-grid" data-carousel-track>
+                  <article class="cabin-choice">
+                    <img src="assets/la-madrina-vino.jpeg" alt="Detalle de descanso en La Madrina">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Amancay</h3>
+                        <p>Una opcion intima para escapadas de pareja o dias de descanso tranquilo.</p>
+                        <ul class="amenity-list">
+                          <li>Ambiente intimo</li>
+                          <li>Cocina equipada</li>
+                          <li>Espacio exterior</li>
+                          <li>Climatizacion</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/amancay.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
                     </div>
-                    <div class="section-actions">
-                      <a class="button" href="cabanas/amancay.html">Ver</a>
-                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                    </div>
-                  </div>
-                </article>
+                  </article>
 
-                <article class="cabin-choice">
-                  <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
-                  <div class="cabin-info">
-                    <div>
-                      <h3>Chilca</h3>
-                      <p>Una cabana compacta y comoda para estadias simples en Tafi del Valle.</p>
-                      <ul class="amenity-list">
-                        <li>Cocina equipada</li>
-                        <li>Area de descanso</li>
-                        <li>Espacio exterior</li>
-                        <li>Climatizacion</li>
-                      </ul>
+                  <article class="cabin-choice">
+                    <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Chilca</h3>
+                        <p>Una cabana compacta y comoda para estadias simples en Tafi del Valle.</p>
+                        <ul class="amenity-list">
+                          <li>Cocina equipada</li>
+                          <li>Area de descanso</li>
+                          <li>Espacio exterior</li>
+                          <li>Climatizacion</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/chilca.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
                     </div>
-                    <div class="section-actions">
-                      <a class="button" href="cabanas/chilca.html">Ver</a>
-                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                    </div>
-                  </div>
-                </article>
+                  </article>
 
-                <article class="cabin-choice">
-                  <img src="assets/la-madrina-terraza.jpeg" alt="Terraza privada en La Madrina">
-                  <div class="cabin-info">
-                    <div>
-                      <h3>Amaicha</h3>
-                      <p>Una opcion tranquila para desconectar, descansar y disfrutar el entorno.</p>
-                      <ul class="amenity-list">
-                        <li>Ambiente intimo</li>
-                        <li>Cocina equipada</li>
-                        <li>Espacio exterior</li>
-                        <li>Climatizacion</li>
-                      </ul>
+                  <article class="cabin-choice">
+                    <img src="assets/la-madrina-terraza.jpeg" alt="Terraza privada en La Madrina">
+                    <div class="cabin-info">
+                      <div>
+                        <h3>Amaicha</h3>
+                        <p>Una opcion tranquila para desconectar, descansar y disfrutar el entorno.</p>
+                        <ul class="amenity-list">
+                          <li>Ambiente intimo</li>
+                          <li>Cocina equipada</li>
+                          <li>Espacio exterior</li>
+                          <li>Climatizacion</li>
+                        </ul>
+                      </div>
+                      <div class="section-actions">
+                        <a class="button" href="cabanas/amaicha.html">Ver</a>
+                        <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                      </div>
                     </div>
-                    <div class="section-actions">
-                      <a class="button" href="cabanas/amaicha.html">Ver</a>
-                      <a class="button secondary" data-whatsapp href="#">Consultar</a>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                </div>
+                <button class="carousel-arrow next" type="button" aria-label="Ver mas unidades" data-carousel-next>›</button>
               </div>
               <p class="carousel-hint">Desliza para ver unidades.</p>
             </section>
@@ -702,6 +787,39 @@
         link.href = whatsappUrl;
         link.target = "_blank";
         link.rel = "noreferrer";
+      });
+
+      document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+        const track = carousel.querySelector("[data-carousel-track]");
+        const prev = carousel.querySelector("[data-carousel-prev]");
+        const next = carousel.querySelector("[data-carousel-next]");
+
+        const updateButtons = () => {
+          const maxScroll = track.scrollWidth - track.clientWidth - 4;
+          prev.disabled = track.scrollLeft <= 4;
+          next.disabled = track.scrollLeft >= maxScroll;
+        };
+
+        const move = (direction) => {
+          track.scrollBy({
+            left: direction * track.clientWidth,
+            behavior: "smooth"
+          });
+        };
+
+        prev.addEventListener("click", () => move(-1));
+        next.addEventListener("click", () => move(1));
+        track.addEventListener("scroll", updateButtons, { passive: true });
+        window.addEventListener("resize", updateButtons);
+        updateButtons();
+      });
+
+      document.querySelectorAll(".cabin-choice").forEach((card) => {
+        card.addEventListener("click", (event) => {
+          if (event.target.closest("a, button")) return;
+          const detailLink = card.querySelector(".section-actions .button:not(.secondary)");
+          detailLink?.click();
+        });
       });
     </script>
   </body>

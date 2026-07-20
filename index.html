@@ -151,9 +151,11 @@
         transition: color 180ms ease, background 180ms ease, transform 180ms ease;
       }
 
-      .nav-links a:hover {
-        background: rgba(238, 245, 231, 0.82);
-        color: var(--green);
+      .nav-links a:hover,
+      .nav-links a.is-active,
+      .nav-links a[aria-current="page"] {
+        background: var(--green);
+        color: var(--white);
         transform: translateY(-1px);
       }
 
@@ -1200,9 +1202,9 @@
           </span>
         </a>
         <div class="nav-links" data-menu>
-          <a href="#complejo">El complejo</a>
-          <a href="unidades.html">Unidades</a>
-          <a href="#galeria">Galeria</a>
+          <a href="#complejo" data-nav-link="complejo">El complejo</a>
+          <a href="unidades.html" data-nav-link="unidades">Unidades</a>
+          <a href="#galeria" data-nav-link="galeria">Galeria</a>
         </div>
         <a class="button" data-whatsapp href="#" target="_blank" rel="noreferrer">Consultar</a>
         <button class="menu-button" data-menu-button aria-label="Abrir menu" aria-expanded="false">
@@ -1473,6 +1475,36 @@
 
       updateTopbar();
       window.addEventListener("scroll", updateTopbar, { passive: true });
+
+      const navSectionLinks = document.querySelectorAll("[data-nav-link]");
+      const trackedSections = ["complejo", "galeria", "reserva"]
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      const setActiveNav = (id) => {
+        navSectionLinks.forEach((link) => {
+          link.classList.toggle("is-active", link.dataset.navLink === id);
+        });
+      };
+
+      const updateActiveNav = () => {
+        const scrollProbe = window.scrollY + window.innerHeight * 0.34;
+        let activeId = "";
+
+        trackedSections.forEach((section) => {
+          if (section.offsetTop <= scrollProbe) {
+            activeId = section.id;
+          }
+        });
+
+        if (window.location.hash === "#galeria") activeId = "galeria";
+        if (window.location.hash === "#complejo") activeId = "complejo";
+        setActiveNav(activeId);
+      };
+
+      updateActiveNav();
+      window.addEventListener("scroll", updateActiveNav, { passive: true });
+      window.addEventListener("hashchange", updateActiveNav);
 
       const revealTargets = document.querySelectorAll(
         ".section .section-inner, .cta-inner, .gallery-tile, .unit-card, .service-card, .location-copy, .map-frame"

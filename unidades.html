@@ -149,8 +149,8 @@
 
       .nav-links a:hover,
       .nav-links a[aria-current="page"] {
-        background: rgba(238, 244, 232, 0.82);
-        color: var(--green);
+        background: var(--green);
+        color: var(--white);
         transform: translateY(-1px);
       }
 
@@ -503,65 +503,78 @@
         margin-bottom: 0;
       }
 
-      .cta {
-        position: relative;
-        isolation: isolate;
-        overflow: hidden;
-        width: min(1160px, calc(100% - 36px));
-        margin: 18px auto 78px;
-        padding: clamp(42px, 7vw, 76px) clamp(22px, 5vw, 58px);
-        border-radius: 8px;
-        background:
-          linear-gradient(115deg, rgba(13, 26, 18, 0.78), rgba(13, 26, 18, 0.42)),
-          url("assets/la-madrina-vino-vista.jpeg") center / cover;
-        color: var(--white);
-        text-align: left;
-        box-shadow: var(--shadow);
+      .cta-band {
+        padding: 82px 18px;
+        background: #fbfcf7;
+        color: var(--ink);
       }
 
-      .cta::after {
+      .cta-inner {
+        width: min(1160px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+        gap: 34px;
+        align-items: center;
+        padding: clamp(22px, 4vw, 34px);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: 0 18px 52px rgba(23, 31, 22, 0.08);
+      }
+
+      .cta-content {
+        padding: clamp(10px, 2vw, 18px);
+      }
+
+      .cta-kicker {
+        margin: 0 0 13px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .cta-inner h2 {
+        margin-bottom: 18px;
+        color: var(--ink);
+      }
+
+      .cta-inner p {
+        width: min(620px, 100%);
+        margin: 0 0 28px;
+        color: var(--muted);
+        font-size: 1.04rem;
+        line-height: 1.68;
+      }
+
+      .cta-content::before {
         content: "";
-        position: absolute;
-        inset: auto clamp(16px, 4vw, 42px) clamp(16px, 4vw, 42px) auto;
-        width: min(340px, 42%);
-        aspect-ratio: 1.6;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: block;
+        width: 72px;
+        height: 1px;
+        margin-bottom: 26px;
+        background: rgba(23, 107, 69, 0.3);
+      }
+
+      .cta-inner .button {
+        border-color: transparent;
+        background: var(--green);
+        color: var(--white);
+        box-shadow: 0 16px 34px rgba(23, 107, 69, 0.22);
+      }
+
+      .cta-inner .button:hover {
+        background: #105b39;
+        box-shadow: 0 20px 40px rgba(23, 107, 69, 0.27);
+      }
+
+      .cta-photo {
+        min-height: 360px;
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px);
-        z-index: -1;
-      }
-
-      .cta h2,
-      .cta p,
-      .cta .button {
-        position: relative;
-        z-index: 1;
-      }
-
-      .cta h2 {
-        max-width: 720px;
-        color: var(--white);
-      }
-
-      .cta p {
-        width: min(650px, 100%);
-        margin: 0 0 24px;
-        color: rgba(255, 255, 255, 0.82);
-      }
-
-      .cta .button {
-        border-color: rgba(255, 255, 255, 0.22);
-        background: rgba(255, 255, 255, 0.16);
-        color: var(--white);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
-      }
-
-      .cta .button:hover {
-        border-color: rgba(255, 255, 255, 0.34);
-        background: rgba(255, 255, 255, 0.24);
-        box-shadow: 0 22px 48px rgba(0, 0, 0, 0.22);
+        background: url("assets/la-madrina-familia-terraza.jpeg") center / cover;
+        box-shadow: 0 18px 48px rgba(23, 31, 22, 0.12);
       }
 
       footer {
@@ -601,8 +614,14 @@
 
         .hero,
         .section-head,
-        .capacity-title {
+        .capacity-title,
+        .cta-inner {
           grid-template-columns: 1fr;
+        }
+
+        .cta-photo {
+          min-height: 280px;
+          order: -1;
         }
 
         .compare-grid {
@@ -888,13 +907,19 @@
         </div>
       </section>
 
-      <section class="cta">
-        <h2>Listo para tu escapada a Tafi del Valle?</h2>
-        <p>
-          Escribinos con tus fechas ideales, cantidad de huespedes y tipo de viaje. Te respondemos
-          con opciones disponibles para La Madrina.
-        </p>
-        <a class="button" data-whatsapp href="#">Enviar consulta de reserva</a>
+      <section class="cta-band" id="reserva">
+        <div class="cta-inner">
+          <div class="cta-content">
+            <p class="cta-kicker">Reservas</p>
+            <h2>Listo para tu escapada a Tafi del Valle?</h2>
+            <p>
+              Escribinos con tus fechas ideales, cantidad de huespedes y tipo de viaje.
+              Te respondemos con opciones disponibles para La Madrina.
+            </p>
+            <a class="button" data-whatsapp href="#">Enviar consulta de reserva</a>
+          </div>
+          <div class="cta-photo" role="img" aria-label="Familia disfrutando la terraza de La Madrina"></div>
+        </div>
       </section>
     </main>
 

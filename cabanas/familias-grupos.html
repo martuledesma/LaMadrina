@@ -57,6 +57,9 @@
       .nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: end; }
       .nav-links a { padding: 10px 12px; border-radius: 7px; font-size: 0.92rem; font-weight: 750; }
       .nav-links a:hover { background: var(--sage); color: var(--green); }
+      .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+      .brand-logo { width: 38px; height: 38px; object-fit: contain; flex: 0 0 auto; }
+      .brand-text { display: grid; gap: 1px; min-width: 0; }
       .button {
         display: inline-flex;
         align-items: center;
@@ -174,13 +177,16 @@
   </head>
   <body>
     <header class="nav">
-      <a href="../index.html">
-        <span class="brand-name">La Madrina</span>
-        <span class="brand-type">Apart Hotel</span>
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/la-madrina-logo-clean.png" alt="">
+        <span class="brand-text">
+          <span class="brand-name">La Madrina</span>
+          <span class="brand-type">Apart Hotel</span>
+        </span>
       </a>
       <div class="nav-links">
         <a href="../index.html#complejo">El complejo</a>
-        <a href="../unidades.html">Unidades</a>
+        <a class="back-link" href="../unidades.html">← Volver</a>
         <a href="../index.html#galeria">Galeria</a>
         <a class="button" data-whatsapp href="#">Consultar</a>
       </div>

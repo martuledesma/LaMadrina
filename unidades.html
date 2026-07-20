@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unidades | La Madrina Apart Hotel</title>
+    <meta
+      name="description"
+      content="Conoce las unidades de La Madrina Apart Hotel por capacidad, amenities y tipo de estadia."
+    >
+    <style>
+      :root {
+        --green: #176b45;
+        --green-soft: #5f8e2f;
+        --ink: #171713;
+        --muted: #676a61;
+        --line: #e1e6d8;
+        --paper: #fbfcf7;
+        --white: #ffffff;
+        --sage: #eef4e8;
+        --shadow: 0 18px 60px rgba(23, 23, 19, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px max(18px, calc((100vw - 1160px) / 2));
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 252, 247, 0.94);
+        backdrop-filter: blur(14px);
+      }
+
+      .brand-name {
+        display: block;
+        font-family: Georgia, "Times New Roman", serif;
+        letter-spacing: 0.2em;
+        font-size: 1.08rem;
+      }
+
+      .brand-type {
+        display: block;
+        margin-top: 2px;
+        color: var(--green);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        padding: 10px 12px;
+        border-radius: 7px;
+        font-size: 0.92rem;
+        font-weight: 750;
+      }
+
+      .nav-links a:hover,
+      .nav-links a[aria-current="page"] {
+        background: var(--sage);
+        color: var(--green);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid transparent;
+        border-radius: 7px;
+        background: var(--green);
+        color: var(--white);
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .button.secondary {
+        background: var(--white);
+        color: var(--green);
+        border-color: rgba(23, 107, 69, 0.22);
+      }
+
+      .hero {
+        width: min(1160px, calc(100% - 36px));
+        margin: 34px auto 0;
+        display: grid;
+        grid-template-columns: minmax(300px, 0.6fr) minmax(0, 1fr);
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .hero-copy {
+        padding: 36px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .hero-media {
+        min-height: 520px;
+        border-radius: 8px;
+        background: url("assets/la-madrina-terraza.jpeg") center / cover;
+        box-shadow: var(--shadow);
+      }
+
+      .kicker {
+        margin: 0 0 12px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 500;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        font-size: clamp(2.6rem, 5.4vw, 4.8rem);
+        line-height: 1;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: clamp(2rem, 3.8vw, 3.2rem);
+        line-height: 1.08;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 1.55rem;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.68;
+      }
+
+      .hero-copy p {
+        font-size: 1.04rem;
+      }
+
+      .hero-actions,
+      .section-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .section {
+        padding: 74px 18px;
+      }
+
+      .section.alt {
+        background: var(--white);
+      }
+
+      .inner {
+        width: min(1160px, 100%);
+        margin: 0 auto;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.65fr);
+        gap: 38px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      .lead {
+        margin-bottom: 0;
+        font-size: 1.04rem;
+      }
+
+      .unit-list {
+        display: grid;
+        gap: 18px;
+      }
+
+      .unit-row {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+        gap: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--white);
+      }
+
+      .unit-row img {
+        height: 100%;
+        min-height: 310px;
+        object-fit: cover;
+      }
+
+      .unit-info {
+        padding: 30px;
+        display: grid;
+        align-content: center;
+      }
+
+      .capacity {
+        width: fit-content;
+        margin-bottom: 14px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: var(--sage);
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .amenity-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin: 20px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .amenity-list li {
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcf7;
+        color: #3f443b;
+        font-weight: 700;
+      }
+
+      .compare-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .compare-card {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .compare-card strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--green);
+      }
+
+      .compare-card p {
+        margin-bottom: 0;
+      }
+
+      .cta {
+        padding: 62px 18px;
+        background: #173d2b;
+        color: var(--white);
+        text-align: center;
+      }
+
+      .cta p {
+        width: min(650px, 100%);
+        margin: 0 auto 22px;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      footer {
+        padding: 28px 18px;
+        background: #10291d;
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .footer-inner {
+        width: min(1160px, 100%);
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 860px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .hero,
+        .section-head,
+        .unit-row {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-media {
+          min-height: 340px;
+        }
+
+        .unit-row img {
+          min-height: 250px;
+        }
+
+        .compare-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .hero {
+          width: calc(100% - 28px);
+          margin-top: 18px;
+        }
+
+        .hero-copy,
+        .unit-info {
+          padding: 24px;
+        }
+
+        .button {
+          width: 100%;
+          white-space: normal;
+          text-align: center;
+        }
+
+        .amenity-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <a href="index.html">
+        <span class="brand-name">La Madrina</span>
+        <span class="brand-type">Apart Hotel</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#complejo">El complejo</a>
+        <a href="unidades.html" aria-current="page">Unidades</a>
+        <a href="index.html#galeria">Galeria</a>
+        <a class="button" data-whatsapp href="#">Consultar</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">Unidades</p>
+          <h1>Cabañas para cada forma de viajar.</h1>
+          <p>
+            Esta pagina concentra las opciones de alojamiento de La Madrina para comparar capacidades,
+            comodidades y tipo de estadia antes de entrar al detalle de cada cabana.
+          </p>
+          <div class="hero-actions">
+            <a class="button" data-whatsapp href="#">Consultar disponibilidad</a>
+            <a class="button secondary" href="#detalle">Comparar unidades</a>
+          </div>
+        </div>
+        <div class="hero-media" role="img" aria-label="Terraza privada de La Madrina"></div>
+      </section>
+
+      <section class="section" id="detalle">
+        <div class="inner">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Catalogo</p>
+              <h2>Elegilas por capacidad.</h2>
+            </div>
+            <p class="lead">
+              Cada unidad puede tener fotos y amenities propios. Por ahora dejamos la estructura
+              lista para completar con las imagenes reales de cada cabana.
+            </p>
+          </div>
+
+          <div class="unit-list">
+            <article class="unit-row">
+              <img src="assets/la-madrina-complejo-dia.jpeg" alt="Vista exterior de La Madrina">
+              <div class="unit-info">
+                <span class="capacity">Hasta 6 personas</span>
+                <h3>Familias y grupos</h3>
+                <p>
+                  La opcion mas amplia para viajes familiares o grupos de amigos que necesitan
+                  mayor comodidad, circulacion y una estadia organizada.
+                </p>
+                <ul class="amenity-list">
+                  <li>Cocina equipada</li>
+                  <li>Espacio exterior privado</li>
+                  <li>Ambientes amplios</li>
+                  <li>Estacionamiento</li>
+                </ul>
+                <div class="section-actions">
+                  <a class="button" href="cabanas/familias-grupos.html">Ver detalle</a>
+                  <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="unit-row">
+              <img src="assets/la-madrina-terraza.jpeg" alt="Terraza con vista a las montanas">
+              <div class="unit-info">
+                <span class="capacity">3 a 4 personas</span>
+                <h3>Escapadas familiares</h3>
+                <p>
+                  Una alternativa equilibrada para familias chicas o amigos que quieren independencia,
+                  exterior propio y una base comoda para moverse por Tafi.
+                </p>
+                <ul class="amenity-list">
+                  <li>Cocina equipada</li>
+                  <li>Galeria o terraza</li>
+                  <li>Area de estar</li>
+                  <li>Ropa blanca</li>
+                </ul>
+                <div class="section-actions">
+                  <a class="button" href="cabanas/escapadas-familiares.html">Ver detalle</a>
+                  <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="unit-row">
+              <img src="assets/la-madrina-vino.jpeg" alt="Detalle de descanso en La Madrina">
+              <div class="unit-info">
+                <span class="capacity">2 a 3 personas</span>
+                <h3>Parejas y descanso</h3>
+                <p>
+                  Una unidad mas intima para escapadas de pareja, viajes individuales o dias de
+                  desconexion con el valle como escenario principal.
+                </p>
+                <ul class="amenity-list">
+                  <li>Ambiente intimo</li>
+                  <li>Cocina equipada</li>
+                  <li>Espacio exterior</li>
+                  <li>Climatizacion</li>
+                </ul>
+                <div class="section-actions">
+                  <a class="button" href="cabanas/parejas-descanso.html">Ver detalle</a>
+                  <a class="button secondary" data-whatsapp href="#">Consultar</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="inner">
+          <div class="section-head">
+            <div>
+              <p class="kicker">Como elegir</p>
+              <h2>Una guia rapida antes de consultar.</h2>
+            </div>
+            <p class="lead">
+              Cuando tengamos fotos especificas de cada unidad, esta pagina puede crecer con
+              planos, medidas, camas, equipamiento y condiciones por cabana.
+            </p>
+          </div>
+
+          <div class="compare-grid">
+            <div class="compare-card">
+              <strong>Viajan con chicos o en grupo?</strong>
+              <p>Conviene mirar primero la unidad de hasta 6 personas.</p>
+            </div>
+            <div class="compare-card">
+              <strong>Quieren algo practico?</strong>
+              <p>La opcion de 3 a 4 personas funciona muy bien para escapadas familiares.</p>
+            </div>
+            <div class="compare-card">
+              <strong>Buscan tranquilidad?</strong>
+              <p>La unidad de 2 a 3 personas esta pensada para estadias mas intimas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Consultanos por tus fechas</h2>
+        <p>
+          Decinos cantidad de huespedes, fechas tentativas y si preferis una unidad mas amplia
+          o una estadia mas intima.
+        </p>
+        <a class="button" data-whatsapp href="#">Enviar consulta</a>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>La Madrina Apart Hotel</span>
+        <span><a href="index.html">Volver al inicio</a></span>
+      </div>
+    </footer>
+
+    <script>
+      const whatsappText = "Hola! Quisiera consultar disponibilidad de unidades en La Madrina Apart Hotel.";
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
+      document.querySelectorAll("[data-whatsapp]").forEach((link) => {
+        link.href = whatsappUrl;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+      });
+    </script>
+  </body>
+</html>

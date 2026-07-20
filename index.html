@@ -62,17 +62,16 @@
         display: flex;
         justify-content: center;
         padding: 14px 18px;
-        transition: background 180ms ease, box-shadow 180ms ease, padding 180ms ease;
+        pointer-events: none;
+        transition: padding 220ms ease, transform 220ms ease;
       }
 
       .topbar.is-scrolled {
-        background: rgba(251, 252, 247, 0.94);
-        box-shadow: 0 12px 34px rgba(23, 23, 19, 0.08);
-        backdrop-filter: blur(16px);
         padding-block: 9px;
       }
 
       .nav {
+        position: relative;
         width: min(1180px, 100%);
         min-height: 64px;
         display: grid;
@@ -80,9 +79,20 @@
         align-items: center;
         gap: 18px;
         padding: 8px 10px 8px 22px;
-        border: 1px solid rgba(255, 255, 255, 0.42);
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.56);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow: 0 18px 60px rgba(23, 23, 19, 0.12);
+        backdrop-filter: blur(18px);
+        pointer-events: auto;
+        transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease, min-height 220ms ease;
+      }
+
+      .topbar.is-scrolled .nav {
+        min-height: 58px;
+        border-color: rgba(255, 255, 255, 0.38);
+        background: rgba(251, 252, 247, 0.58);
+        box-shadow: 0 12px 38px rgba(23, 23, 19, 0.1);
       }
 
       .brand {
@@ -90,6 +100,11 @@
         align-items: center;
         gap: 12px;
         min-width: 0;
+        transition: transform 180ms ease;
+      }
+
+      .brand:hover {
+        transform: translateY(-1px);
       }
 
       .brand-logo {
@@ -127,16 +142,19 @@
       }
 
       .nav-links a {
+        position: relative;
         padding: 11px 12px;
-        border-radius: 7px;
+        border-radius: 999px;
         color: #31342e;
         font-size: 0.92rem;
         font-weight: 700;
+        transition: color 180ms ease, background 180ms ease, transform 180ms ease;
       }
 
       .nav-links a:hover {
-        background: #eef5e7;
+        background: rgba(238, 245, 231, 0.82);
         color: var(--green);
+        transform: translateY(-1px);
       }
 
       .button {
@@ -153,16 +171,25 @@
         box-shadow: 0 14px 28px rgba(23, 107, 69, 0.24);
         cursor: pointer;
         white-space: nowrap;
+        transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
       }
 
       .button:hover {
         background: #105b39;
+        transform: translateY(-1px);
+        box-shadow: 0 18px 34px rgba(23, 107, 69, 0.28);
       }
 
       .button.secondary {
         background: var(--white);
         color: var(--green);
         border-color: rgba(23, 107, 69, 0.22);
+        box-shadow: none;
+      }
+
+      .button.secondary:hover {
+        background: #f4f8ef;
+        border-color: rgba(23, 107, 69, 0.34);
         box-shadow: none;
       }
 
@@ -228,6 +255,7 @@
       .hero-content {
         width: min(560px, 100%);
         color: var(--white);
+        animation: heroRise 820ms ease both;
       }
 
       .eyebrow {
@@ -336,6 +364,7 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--white);
+        box-shadow: 0 18px 48px rgba(23, 31, 22, 0.06);
       }
 
       .intro-panel h2 {
@@ -375,6 +404,12 @@
         background: #d9d9d9;
         box-shadow: var(--shadow);
         isolation: isolate;
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .photo-carousel:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 24px 70px rgba(23, 23, 19, 0.16);
       }
 
       .photo-carousel.is-complex {
@@ -710,6 +745,13 @@
         text-align: center;
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(10px);
+        transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+      }
+
+      .services-section .service-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.34);
+        background: rgba(255, 255, 255, 0.26);
       }
 
       .services-section .service-card p {
@@ -758,6 +800,48 @@
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.72);
         box-shadow: 0 18px 48px rgba(23, 31, 22, 0.08);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 680ms ease, transform 680ms ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes heroRise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 1ms !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
       }
 
       .map-frame {
@@ -1282,6 +1366,32 @@
 
       updateTopbar();
       window.addEventListener("scroll", updateTopbar, { passive: true });
+
+      const revealTargets = document.querySelectorAll(
+        ".section .section-inner, .cta-inner, .gallery-tile, .unit-card, .service-card, .location-copy, .map-frame"
+      );
+
+      revealTargets.forEach((element) => {
+        element.classList.add("reveal");
+      });
+
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.16 }
+        );
+
+        revealTargets.forEach((element) => revealObserver.observe(element));
+      } else {
+        revealTargets.forEach((element) => element.classList.add("is-visible"));
+      }
 
       menuButton.addEventListener("click", () => {
         const isOpen = menu.classList.toggle("is-open");
